@@ -1,0 +1,2 @@
+# event-app
+nextjs routing 
