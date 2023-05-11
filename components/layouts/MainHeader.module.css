@@ -1,0 +1,20 @@
+.header{
+  background-color: #0D1421;
+  color: #fff;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__nav ul{
+  display: flex;
+  list-style-type: none;
+  gap: 40px;
+  align-items: center;
+}
+
+.header__nav ul li a{
+  color: #fff;
+  text-decoration: none;
+}

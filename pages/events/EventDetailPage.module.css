@@ -1,0 +1,39 @@
+.container{
+
+}
+
+.eventDetails {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  padding: 150px 20px 0 20px;  
+
+}
+
+
+.eventDetails__image img {
+  width: 400px;
+  border-radius:40px;
+  border: 1px solid gray;
+}
+
+.eventDetails__details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.eventDetails__details:nth-child(2){
+  max-width: 500px;
+}
+
+.eventDetails__back{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.eventDetails__button {
+  display: flex;
+  justify-content: flex-end;
+}

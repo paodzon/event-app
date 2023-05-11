@@ -1,0 +1,16 @@
+.eventSearch__container {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 600px;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eventSearch__container select {
+  margin-left: 10px;
+  width: 150px;
+  padding: 5px 10px;
+  border-radius: 7px;
+}

@@ -1,0 +1,7 @@
+.event__container {
+  margin: 40px;
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  }
