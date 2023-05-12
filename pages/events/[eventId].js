@@ -1,16 +1,14 @@
 import React from "react";
-import { getEventById } from "@/dummy-data";
+import { getEventById, getFeaturedEvents} from "@/helpers/api-utils";
 import { useRouter } from "next/router";
 import CalendarIcon from "../../components/icons/CalendarIcon";
 import LocationIcon from "../../components/icons/LocationIcon";
 import classes from "./EventDetailPage.module.css";
 import Button from "@/components/ui/Button";
 
-function EventDetailPage() {
+function EventDetailPage(props) {
   const router = useRouter();
-  const event = getEventById(router.query.eventId);
-  console.log(event);
-
+  const {event} = props;
   if (event == null) {
     return (
       <div className={classes.eventDetails}>
@@ -39,6 +37,18 @@ function EventDetailPage() {
       </div>
     </div>
   );
+}
+
+export const getStaticProps = async (context) => {
+  const { params }= context;
+  const event = await getEventById(params.eventId);
+  return {props: { event }, revalidate: 30}
+}
+
+export const getStaticPaths = async () => {
+  const events = await getFeaturedEvents();
+  const paramEvents = events.map((event) => ({params: {eventId: event.id}}));
+  return { paths: paramEvents, fallback: true }
 }
 
 export default EventDetailPage;

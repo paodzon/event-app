@@ -5,15 +5,10 @@ import EventList from '@/components/events/EventList';
 import EventSearch from '@/components/events/EventSearch';
 import classes from './EventPage.module.css';
 
-function FilteredEventsPage() {
+function FilteredEventsPage(props) {
   const router = useRouter();
+  const { filteredEvents } = props;
 
-
-  const yearEventValue = +router.query.slug[0];
-  const monthEventValue = +router.query.slug[1];
-
-  const filteredEvents = getFilteredEvents({year: yearEventValue, month: monthEventValue});
-  
   const onFindEventHandler = (year, month) => {
     console.log({year,month});
     router.push(`/events/${year}/${month}`)
@@ -32,6 +27,14 @@ function FilteredEventsPage() {
       <EventList events={filteredEvents}/>
     </div>
   )
+}
+
+export const getServerSideProps = (context) => {
+  const { params } = context;
+  const yearEventValue = +params.slug[0];
+  const monthEventValue = +params.slug[1];
+  const filteredEvents = getFilteredEvents({year: yearEventValue, month: monthEventValue});
+  return { props: { filteredEvents }}
 }
 
 export default FilteredEventsPage
